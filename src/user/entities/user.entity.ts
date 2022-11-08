@@ -30,6 +30,7 @@ export class UserEntity extends TimestampEntities {
     @Column({
         type: 'enum',
         enum: UserRoleEnum,
+        nullable: false,
         default: UserRoleEnum.USER
     })
     role: string;
