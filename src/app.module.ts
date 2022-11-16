@@ -10,6 +10,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CvModule } from './cv/cv.module';
 import { CvEntity } from './cv/entities/cv.entity';
 import { UserModule } from './user/user.module';
+import { CategoriesModule } from './resources/categories/categories.module';
+import { ProductsModule } from './resources/products/products.module';
+import { ClientsModule } from './resources/clients/clients.module';
+import { CompagniesModule } from './resources/compagnies/compagnies.module';
+import { CountriesModule } from './resources/countries/countries.module';
+import { ProjectsModule } from './resources/projects/projects.module';
 
 @Module({
   imports: [
@@ -17,18 +23,27 @@ import { UserModule } from './user/user.module';
     ConfigModule.forRoot({
       isGlobal: true
     }),
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      host: process.env.DB_HOST,
-      port: parseInt(process.env.DB_PORT),
-      username: process.env.DB_USERNAME,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
-      entities: ["dist/**/*.entity{.ts,.js}"],
-      synchronize: true,
-    }),
-    CvModule,
-    UserModule
+    // TypeOrmModule.forRoot({
+    //   type: 'mysql',
+    //   host: process.env.DB_HOST,
+    //   port: parseInt(process.env.DB_PORT),
+    //   username: process.env.DB_USERNAME,
+    //   password: process.env.DB_PASSWORD,
+    //   database: process.env.DB_NAME,
+    //   entities: ["dist/**/*.entity{.ts,.js}"],
+    //   synchronize: true,
+    // }),
+
+    // Configuration de la BD
+    TypeOrmModule.forRoot(),
+    CompagniesModule,
+    CountriesModule,
+    // ProjectsModule,
+    // CvModule,
+    // UserModule,
+    // CategoriesModule,
+    // ProductsModule,
+    // ClientsModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -5,6 +5,7 @@ import * as morgan from "morgan";
 import * as dotenv from 'dotenv';
 import { DurationInterceptor } from './interceptors/duration.interceptor';
 import { ConfigService } from '@nestjs/config';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 dotenv.config();
 
@@ -29,9 +30,21 @@ async function bootstrap() {
     whitelist: true,
     forbidNonWhitelisted: true
   })); 
+
   app.useGlobalInterceptors(new DurationInterceptor());
+
+  const config = new DocumentBuilder()
+    .setTitle('KEI API')
+    .setDescription('This is API for the KORV Estatement Inventory Apllication that provides more functionnalities.')
+    .setVersion('1.0')
+    .addTag('#kei-api')
+    .build();
+
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
   await app.listen(configService.get('APP_PORT'));
 }
 
 bootstrap();
+clearImmediate

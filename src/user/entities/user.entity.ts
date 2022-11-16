@@ -1,6 +1,6 @@
 import { CvEntity } from "src/cv/entities/cv.entity";
 import { UserRoleEnum } from "src/enums/user-role.enum";
-import { TimestampEntities } from "src/Generics/timestamp.entities";
+import { TimestampEntities } from "@/generics/timestamp.entities";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('user')

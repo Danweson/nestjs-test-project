@@ -1,5 +1,5 @@
 import { type } from "os";
-import { TimestampEntities } from "src/Generics/timestamp.entities";
+import { TimestampEntities } from "@/generics/timestamp.entities"
 import { UserEntity } from "src/user/entities/user.entity";
 import { Column, Entity, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn} from "typeorm";
 
